@@ -21,6 +21,32 @@ public class ApiResult<T> {
         this.timestamp = timestamp;
     }
 
+    public static <T> ApiResult<T> success(String message) {
+        ApiResult<T> response = new ApiResult<>();
+        response.setSuccess(true);
+        response.setMessage(message);
+        response.setTimestamp(Instant.now());
+        return response;
+    }
+
+    public static <T> ApiResult<T> success(String message, T data) {
+        ApiResult<T> response = new ApiResult<>();
+        response.setSuccess(true);
+        response.setMessage(message);
+        response.setData(data);
+        response.setTimestamp(Instant.now());
+        return response;
+    }
+
+    public static <T> ApiResult<T> failure(String message, List<String> errors) {
+        ApiResult<T> response = new ApiResult<>();
+        response.setSuccess(false);
+        response.setMessage(message);
+        response.setErrors(errors);
+        response.setTimestamp(Instant.now());
+        return response;
+    }
+
     public boolean isSuccess() {return success;}
 
     public void setSuccess(boolean success) {this.success = success;}

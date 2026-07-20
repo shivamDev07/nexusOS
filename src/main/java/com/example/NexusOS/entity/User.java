@@ -2,6 +2,7 @@ package com.example.NexusOS.entity;
 
 import com.example.NexusOS.enums.AccountStatus;
 import jakarta.persistence.*;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,6 +42,15 @@ public class User extends BaseEntity{
     @Column(nullable = false)
     private AccountStatus accountStatus = AccountStatus.INACTIVE;
 
+    @Column(nullable = false)
+    private boolean enabled = false;
+
+    @Column(nullable = false)
+    private boolean accountLocked = false;
+
+    @Column(nullable = false)
+    private int failedLoginAttempts = 0;
+
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL,
@@ -51,10 +61,20 @@ public class User extends BaseEntity{
 
     public User() {}
 
-    public User(String firstName, String lastName, String username, String email,
-                String passwordHash, String phone, String profileImageUrl,
-                boolean emailVerified, boolean phoneVerified,
-                AccountStatus accountStatus) {
+    public User(String firstName,
+                String lastName,
+                String username,
+                String email,
+                String passwordHash,
+                String phone,
+                String profileImageUrl,
+                boolean emailVerified,
+                boolean phoneVerified,
+                AccountStatus accountStatus,
+                boolean enabled,
+                boolean accountLocked,
+                int failedLoginAttempts) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -65,6 +85,9 @@ public class User extends BaseEntity{
         this.emailVerified = emailVerified;
         this.phoneVerified = phoneVerified;
         this.accountStatus = accountStatus;
+        this.enabled = enabled;
+        this.accountLocked = accountLocked;
+        this.failedLoginAttempts = failedLoginAttempts;
     }
 
     public String getFirstName() {
@@ -153,5 +176,29 @@ public class User extends BaseEntity{
 
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isAccountLocked() {
+        return accountLocked;
+    }
+
+    public void setAccountLocked(boolean accountLocked) {
+        this.accountLocked = accountLocked;
+    }
+
+    public int getFailedLoginAttempts() {
+        return failedLoginAttempts;
+    }
+
+    public void setFailedLoginAttempts(int failedLoginAttempts) {
+        this.failedLoginAttempts = failedLoginAttempts;
     }
 }
