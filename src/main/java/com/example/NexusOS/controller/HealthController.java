@@ -1,7 +1,7 @@
 package com.example.NexusOS.controller;
 
 import com.example.NexusOS.dto.response.HealthResponseDTO;
-import com.example.NexusOS.response.ApiResult;
+import com.example.NexusOS.dto.request.ApiResult;
 import com.example.NexusOS.service.HealthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

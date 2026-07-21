@@ -1,7 +1,9 @@
 package com.example.NexusOS.controller;
 
+import com.example.NexusOS.dto.request.LoginRequestDTO;
 import com.example.NexusOS.dto.request.RegisterRequestDTO;
-import com.example.NexusOS.response.ApiResult;
+import com.example.NexusOS.dto.request.ApiResult;
+import com.example.NexusOS.dto.response.AuthResponseDTO;
 import com.example.NexusOS.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,15 @@ public class AuthController {
 
         return ResponseEntity.ok(
                 ApiResult.success("Registration successful. Please verify your email.")
+        );
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponseDTO> login(
+            @Valid @RequestBody LoginRequestDTO request) {
+
+        return ResponseEntity.ok(
+                authService.login(request)
         );
     }
 }

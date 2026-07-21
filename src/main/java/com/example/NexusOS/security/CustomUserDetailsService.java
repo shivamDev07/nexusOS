@@ -1,4 +1,4 @@
-package com.example.NexusOS.service;
+package com.example.NexusOS.security;
 
 public class CustomUserDetailsService {
 }

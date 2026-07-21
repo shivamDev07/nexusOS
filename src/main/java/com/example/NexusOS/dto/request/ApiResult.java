@@ -1,4 +1,4 @@
-package com.example.NexusOS.response;
+package com.example.NexusOS.dto.request;
 
 
 import java.time.Instant;
