@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -16,9 +17,11 @@ import java.util.function.Function;
 public class JwtService {
 
     private final JwtProperties jwtProperties;
+    private final UserDetailsService userDetailsService;
 
-    public JwtService(JwtProperties jwtProperties) {
+    public JwtService(JwtProperties jwtProperties, UserDetailsService userDetailsService) {
         this.jwtProperties = jwtProperties;
+        this.userDetailsService = userDetailsService;
     }
 
     public String generateToken(UserDetails userDetails) {
