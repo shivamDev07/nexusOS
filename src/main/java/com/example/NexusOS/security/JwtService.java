@@ -17,11 +17,9 @@ import java.util.function.Function;
 public class JwtService {
 
     private final JwtProperties jwtProperties;
-    private final UserDetailsService userDetailsService;
 
-    public JwtService(JwtProperties jwtProperties, UserDetailsService userDetailsService) {
+    public JwtService(JwtProperties jwtProperties) {
         this.jwtProperties = jwtProperties;
-        this.userDetailsService = userDetailsService;
     }
 
     public String generateToken(UserDetails userDetails) {

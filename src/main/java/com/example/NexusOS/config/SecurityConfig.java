@@ -18,6 +18,7 @@ public class SecurityConfig {
     // Custom filter responsible for validating JWT on every request.
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+
     // Constructor Injection
     public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
