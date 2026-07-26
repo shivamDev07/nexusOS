@@ -1,10 +1,12 @@
 package com.example.NexusOS.controller;
 
 import com.example.NexusOS.dto.request.LoginRequestDTO;
+import com.example.NexusOS.dto.request.RefreshTokenRequestDTO;
 import com.example.NexusOS.dto.request.RegisterRequestDTO;
 import com.example.NexusOS.dto.request.ApiResult;
 import com.example.NexusOS.dto.response.AuthResponseDTO;
 import com.example.NexusOS.service.AuthService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +39,17 @@ public class AuthController {
 
         return ResponseEntity.ok(
                 authService.login(request)
+        );
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<ApiResult<AuthResponseDTO>> refreshToken(
+            @Valid @RequestBody RefreshTokenRequestDTO request) {
+
+        AuthResponseDTO response = authService.refreshToken(request);
+
+        return ResponseEntity.ok(
+                ApiResult.success("Access token refreshed successfully.", response)
         );
     }
 }

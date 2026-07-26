@@ -1,24 +1,22 @@
 package com.example.NexusOS.dto.response;
 
-public class AuthResponseDTO {
+public class RefreshTokenResponseDTO {
 
     private String accessToken;
-    private String refreshToken;
-    private String tokenType;
-    private long expiresIn;
 
-    public AuthResponseDTO() {
+    private String tokenType;
+
+    private String refreshToken;
+
+    private Long expiresIn;
+
+    public RefreshTokenResponseDTO() {
     }
 
-    public AuthResponseDTO(
-            String accessToken,
-            String refreshToken,
-            String tokenType,
-            long expiresIn
-    ) {
+    public RefreshTokenResponseDTO(String accessToken, String tokenType, String refreshToken, Long expiresIn) {
         this.accessToken = accessToken;
-        this.refreshToken = refreshToken;
         this.tokenType = tokenType;
+        this.refreshToken = refreshToken;
         this.expiresIn = expiresIn;
     }
 
@@ -30,14 +28,6 @@ public class AuthResponseDTO {
         this.accessToken = accessToken;
     }
 
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
-
     public String getTokenType() {
         return tokenType;
     }
@@ -46,11 +36,19 @@ public class AuthResponseDTO {
         this.tokenType = tokenType;
     }
 
-    public long getExpiresIn() {
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public Long getExpiresIn() {
         return expiresIn;
     }
 
-    public void setExpiresIn(long expiresIn) {
+    public void setExpiresIn(Long expiresIn) {
         this.expiresIn = expiresIn;
     }
 }
